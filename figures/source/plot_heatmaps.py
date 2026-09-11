@@ -24,7 +24,8 @@ def panel(config, values, dest, stem, censored=None, log_values=False,
                     ax.add_patch(Rectangle((group[0]-.5, y-.5), len(group), 1,
                                           facecolor="none", hatch="////",
                                           edgecolor=style.HATCH, linewidth=0))
-        fig.text(.065, .025, hatch_note, color=style.MUTED, fontsize=10)
+        if hatch_note is not None:
+            fig.text(.065, .025, hatch_note, color=style.MUTED, fontsize=10)
     if np.isnan(values).any():
         fig.text(.855, .025, "Gray hatching: no finite bound.",
                  ha="right", color=style.MUTED, fontsize=10)
@@ -54,13 +55,14 @@ def render(data, dest):
         row["d"], row["sigma"] = int(row["degree"]), float(row["sigma"])
         row["lo"] = int(row["population_h_lower"])
         row["hi"] = int(row["population_h_upper"])
-        assert int(row["cap"]) == 9
-        row["censored"] = not row["actual_h_upper"]
-    values = grid(debate, lambda r: float("nan") if r["status"] == "unresolved"
-                  else r["lo"] if r["censored"] else (r["lo"] + r["hi"]) / 2)
+        assert int(row["cap"]) == 10
+        assert row["display_status"] in ("exact", "capped", "boundary_lower", "boundary_upper")
+        row["display"] = int(row["display_h"])
+        row["censored"] = row["display"] == 10
+    values = grid(debate, lambda r: r["display"])
     panel(config, values, dest, "04_alternating_debate",
           grid(debate, lambda r: r["censored"]),
-          hatch_note="Hatched: lower bound only (measurement cutoff h = 9).")
+          hatch_note=None)
 
     upper = style.read_csv(data / "ensemble.csv")
     for row in upper:

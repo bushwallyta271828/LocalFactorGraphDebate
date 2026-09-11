@@ -1,7 +1,7 @@
 # Population precision for the alternating-debate heatmap
 
 The target is `H = min {h >= 0: E |V_h - L_full| < 0.1}` on the declared
-finite complete regular tree. Max moves first, Min last, and each names
+50,000-vertex partially filled regular tree. Max moves first, Min last, and each names
 exactly h distinct vertices. The target is initially present. No monotonicity
 of error in h is assumed. Displaying a cutoff C means `min(H,C)`; the last
 color means **at least C**, not a demonstrated successful budget C.
@@ -71,7 +71,8 @@ nonnegative supermartingales). A fixed convex mixture has the same property.
 The lower test uses equal weights on `lambda=rho/epsilon` with
 
 ```
-rho = .001,.002,.005,.01,.02,.05,.1,.2,.4,.6,.8,.95.
+rho = .000001,.000002,.000005,.00001,.00002,.00005,.0001,.0002,.0005,
+      .001,.002,.005,.01,.02,.05,.1,.2,.4,.6,.8,.95.
 ```
 
 To reject `E X >= epsilon`, use `Y=min(X,b)` and a tail allowance tau.
@@ -83,7 +84,7 @@ lambda = -rho/(b-(epsilon-tau)),
 ```
 
 are again nonnegative supermartingales under the null. Mix equally over
-all four (b,tau) pairs and the twelve rho values. These are explicit tests
+all four (b,tau) pairs and the 21 rho values. These are explicit tests
 for the original unbounded mean, not for an altered clipped-error target.
 
 The lower test substitutes numerical error lower endpoints into its
@@ -96,7 +97,7 @@ refinement without asserting that the solver endpoints themselves form an
 iid observable. No board is removed because it is difficult or slow.
 
 The declaration reserves a 246-cell grid (six degrees and 41 noise scales),
-including the 66-cell pilot, and both tests at every integer h=0,...,9.
+and both tests at every integer h=0,...,9.
 Each test receives `alpha=0.05/(246*10*2)`.
 A union bound gives simultaneous coverage at least 95% across the entire
 grid, every tested budget, and every sample-prefix stopping time. Pairing
@@ -120,8 +121,16 @@ endpoint is the earliest established success. Clip both endpoints at C.
 Unknown or missing budgets cannot be silently skipped. A later passing
 budget does not establish that an earlier unresolved budget fails.
 
-The publication rule is a clipped interval of width at most one round.
-Width zero identifies an integer or proves saturation. Width one permits
-only the two adjacent displayed integers. Wider intervals receive no
-point-estimate color. This is precision in h itself, not a percentage
-tolerance on mean error whose effect on h would depend on an unknown slope.
+The final publication rule keeps the 240 strict decisions and assigns six
+adjacent boundary cells approximately using a 1% empirical mean-error
+tolerance. Choose the smaller budget when its sample mean-error upper
+endpoint is at most 0.101; otherwise choose the larger budget. The strict
+confidence brackets remain separate from `display_h`. This display rule
+does not give a 95% confidence claim for all six approximate assignments.
+See [TOLERANCE_RULE.md](TOLERANCE_RULE.md) for the full convention.
+
+An additional deterministic Gaussian root-field argument resolves h=0;
+its derivation is retained in [NO_DEBATE_BOUND.md](NO_DEBATE_BOUND.md).
+This bound spends no statistical error probability. Game refinements include
+longer adaptive endings and full-game threshold queries, always intersected
+with the retained interval for the same draw.

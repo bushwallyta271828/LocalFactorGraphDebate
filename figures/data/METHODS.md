@@ -44,21 +44,13 @@ censoring, not a demonstrated phase boundary or a successful budget of 500.
 
 ## 04: alternating debate
 
-The full regular tree depths are:
-
-| d | depth | vertices |
-|---|---|---|
-| 3 | 14 | 49,150 |
-| 4 | 9 | 39,365 |
-| 5 | 7 | 27,306 |
-| 6 | 6 | 23,437 |
-| 7 | 5 | 10,886 |
-| 8 | 5 | 22,409 |
-
-The vertex count is 1+d((d−1)^depth−1)/(d−2). Draw counts vary by cell and
-budget, from 512 to 65,536 in the retained CSV. The declared seed stream
-starts at 2026091000. `grid.json` retains the sampling declaration;
-`alternating_debate.csv` retains the observed counts and brackets.
+Every board has exactly 50,000 vertices, matching figure 03. The next
+complete degree-d ball is pruned by uniformly selecting the required number
+of final-shell vertices. The depths for d=3,...,8 are 15, 10, 8, 7, 6, and 6.
+The seed for draw i at degree d is `20250308+100000*d+i`, paired across
+noise scales. The first 1,000 boards match figure 03 exactly. Additional
+samples extend contiguous prefixes separately at each budget;
+`alternating_debate.csv` records the resulting sample counts and decisions.
 
 Max moves first, Min last, each naming h distinct vertices. Numerical
 strategy bounds enclose each optimal game value. Exhaustive enumeration
@@ -76,12 +68,13 @@ both tests, and budgets h=0,…,9. They give at least 95% simultaneous coverage
 conditional on validity of the numerical enclosures. The complete argument
 is retained in [DEBATE_STATISTICS.md](DEBATE_STATISTICS.md).
 
-Bounded population brackets are shown at their midpoints, which may be
-half-integers. If an upper endpoint is unknown, the color shows the lower
-endpoint and receives hatching. Most hatched cells establish only h≥9;
-some establish only h≥8. They do not show successful convergence at those
-budgets. This population analysis is different from the core panel's
-sample-mean crossing on a different finite tree.
+Every displayed value is an integer. Six boundary cells apply the 1%
+mean-error tolerance described in [TOLERANCE_RULE.md](TOLERANCE_RULE.md). Hatching establishes h>=10: it does
+not establish success at h=10. Every earlier budget must be excluded before
+a minimum is identified, and no unresolved bracket receives a midpoint
+color. An analytic Gaussian root-field bound resolves the zero-move case.
+This population analysis differs from the core panel's sample-mean crossing;
+both panels now use the same finite-tree ensemble.
 
 ## 05, 08, 10: paired error curves
 

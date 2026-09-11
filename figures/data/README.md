@@ -2,13 +2,16 @@
 
 [Methods and numerical qualifications](METHODS.md) are self-contained.
 The [statistical debate protocol](DEBATE_STATISTICS.md) gives the conditional
-simultaneous-confidence argument used for the alternating-debate heatmap.
+simultaneous-confidence argument used for the alternating-debate heatmap,
+the [tolerance rule](TOLERANCE_RULE.md) states the approximate 1% convention
+for its six boundary cells, and the [zero-move bound](NO_DEBATE_BOUND.md)
+derives the analytic bracket used at h=0.
 
 | Input | Meaning |
 |---|---|
 | `grid.json` | Shared 246-cell parameter grid and debate sampling declaration |
 | `core_mean.json` | 1,000-draw empirical mean-core crossing brackets per cell |
-| `alternating_debate.csv` | Population crossing brackets, sample sizes, censoring |
+| `alternating_debate.csv` | Population crossing brackets, sample sizes, displayed integer decisions, censoring |
 | `ensemble.csv` | Uniform mean-error theorem and sufficient-budget evaluations |
 | `curves.json` | Complete 64-board paired-curve report, constants, seeds, and bounds |
 | `curves*.csv` | Tabular exports of the debate, core, upper, and lower curves |

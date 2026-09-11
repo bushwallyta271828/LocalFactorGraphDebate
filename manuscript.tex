@@ -247,14 +247,14 @@ boards' crossing budgets, and is not a population confidence guarantee.}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=.95\textwidth]{figures/images/04_alternating_debate.png}
-\caption{The first budget at which mean absolute debate error is below
-$0.1$, on the finite tree balls specified in the figure data. Colors summarize
-statistical brackets; hatching marks lower bounds where success is
-unresolved. Most hatched cells mean $h\ge9$, some boundary cells $h\ge8$.
-The simultaneous $95\%$ statistical coverage is conditional on the guarded
-floating-point strategy enclosures. The core and debate panels use different
-tree sizes and sampling procedures, so a pixel comparison is not a paired
-empirical test of \eqref{eq:forcing}.}
+\caption{Integer debate budgets for target mean absolute error $0.1$ on
+$50{,}000$-vertex partially filled regular trees, matching the core panel.
+The $240$ resolved cells retain simultaneous $95\%$ confidence decisions,
+conditional on valid guarded numerical enclosures. Six boundary cells are
+assigned approximately: choose the smaller budget when its sample mean-error
+upper bound is at most $0.101$, otherwise the larger budget. Hatching marks
+the cutoff $h\ge10$ under this convention. The strict statistical brackets
+are retained separately in the figure data.}
 \end{figure}
 \begin{figure}[htbp]
 \centering
@@ -1374,8 +1374,9 @@ and numerical qualifications needed to interpret the plots.
 The three budget heatmaps share axes and a color scale, but their entries
 have different meanings. The core panel estimates a crossing of a sample
 mean on $50{,}000$-vertex partially filled trees. The debate panel brackets
-a population crossing on declared finite tree balls using guarded numerical
-enclosures and sequential statistical tests. The ensemble panel evaluates
+a population crossing on the same $50{,}000$-vertex ensemble using guarded
+numerical enclosures and sequential statistical tests; six boundary colors
+add the stated approximate $1\%$ mean-error tolerance. The ensemble panel evaluates
 a size-uniform theorem. The lower-exponent panel evaluates a different
 metric, RMS, with depth increasing logarithmically in the budget.
 

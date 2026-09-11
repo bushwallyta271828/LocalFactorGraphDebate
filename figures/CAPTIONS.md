@@ -27,13 +27,12 @@ of the mean oscillation, not the mean of per-draw crossing budgets.
 
 ## 04 — Alternating debate budget
 
-Moves per player needed for mean absolute root-logit error below 0.1 on
-finite regular tree balls with Gaussian edge tables. Colors show midpoints
-of the retained population-threshold brackets when bounded, and the known
-lower endpoint when the upper endpoint is unknown. Hatching denotes such
-lower bounds at the measurement cutoff: most mean h≥9, while boundary
-cells mean h≥8. The statistical inference assumes the guarded floating-point
-game enclosures are valid. The color scale is shared with figures 03 and 07.
+Integer moves per player for target mean absolute root-logit error 0.1,
+on 50,000-vertex partially filled regular trees matching the first heatmap.
+Six boundary cells use an approximate 1% mean-error tolerance: choose the
+smaller budget when its estimated mean-error upper bound is at most 0.101;
+otherwise choose the larger budget. Hatching marks the cutoff h≥10.
+The color scale is shared with figures 03 and 07.
 
 ## 05 — Debate error and optimal core
 

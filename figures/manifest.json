@@ -3,12 +3,14 @@
   "files": {
     ".gitattributes": "3a0c21822ef624f69cb3689368f89c0da94379f45ce6c68faebcec827ab58fa5",
     ".gitignore": "bc71961db551b93e86b10e83318de55e565a71c6da6f36f87699cb66e701132e",
-    "CAPTIONS.md": "74bfc59caf026357daf8d3d2f308a10e6e7cd1e55e84aec8b64b172e60d209c6",
+    "CAPTIONS.md": "d29fb73aeae5bc764c69acdf79afbe9fefa864b0c91b9ecb9f70e5232bc80fc0",
     "README.md": "c0937437137e3da5774cde1f72052f9957dcb8e78c1092199b4286b266933d02",
-    "data/DEBATE_STATISTICS.md": "d2be691f3a9e03a808400dce205054cf63c2383811f44549863206cd16cd7e47",
-    "data/METHODS.md": "2c05890422db940b915138238fc921e4c4ed865cbc0821f02cb1007dbcfe12da",
-    "data/README.md": "ac232f1cc9584886a843fefc2e1a4c91947277e918fae990ab74b195ca8d28aa",
-    "data/alternating_debate.csv": "8ebd40242cce06ae2cd4d0eca7040a99764ed0235717c716516b4fff83622382",
+    "data/DEBATE_STATISTICS.md": "4bce6702e62b8187b1576e8d32678088ce7b0f650f8015da2ae562b2a2ee4ca8",
+    "data/METHODS.md": "57cebf2a2dedcc680e1c42b0a451fc8b04b6920a99d921be1139d40399055e23",
+    "data/NO_DEBATE_BOUND.md": "8efafbfc192607787d04ca8c56428e1937ce5f3a2da33b2a096be1ef9e190cc6",
+    "data/README.md": "4fcef6ebe912858bc4cd04f4316cd828060ce859873d8b49531fdae334406a06",
+    "data/TOLERANCE_RULE.md": "a7a41ef2b1a19b3e9a44b8725353eda750b27f1801fb5cc6cc23137e41ce10ea",
+    "data/alternating_debate.csv": "7412854ce7ee3b44cfaa7dc4204866faa815019c081dc552253a5a0ae949a8b6",
     "data/core_mean.json": "0c92343cfdbfac9fa351941143f9e8b2dceda06d797af33a663a491d15ec3238",
     "data/curves.cores.csv": "64ca3ab6aa1d82dd4791a9fc966de6e571f79ad1c3f619702df2c4544efaf117",
     "data/curves.csv": "b3465f65adf834f1c08beea97cc0e378bef9310cc9340e9ffa45f0fcf1a52562",
@@ -17,12 +19,12 @@
     "data/curves.lower.csv": "75a6a0267c76d4cdf7407efbebf3062b72b91ce4f2c409a5d2d938a43e66b70f",
     "data/endpoint_certificates.json": "3b22c7d03c05e0cb2e68ac933b71afa9b773427fab4fd3e9221ed08bc29c625b",
     "data/ensemble.csv": "dc73e9fb7d78e5057714ffbc748608ded80f3087456790a3c2ed2d11e24ab5cc",
-    "data/grid.json": "7880b54a1299c271b7e84c9ee83a4bfe7cbb2569763f11ff1f47bb920a450b86",
+    "data/grid.json": "47aafad07f3a0420c14eafb0934ab5daf4f831e1f75c612dac811d9d85c17f3c",
     "data/lower_exponents.json": "8ccb07216621dbde7539b26b4dd4169b1df63c2cd4080d513e81a5213cb5f60b",
     "images/01_transcript.png": "4e7c3d03a79e84339b799a8217afc90eafde972d61a5c099ff709b586d8296c2",
     "images/02_core_oscillation.png": "0090e1fd03e1965a7189bcae31f782b7206fa1bb5a46f5d8291880b3658dc7a3",
     "images/03_core_mean.png": "c2e0dd2efede84f61c7ae45bf17c0acf9f80af50692f983250ece33870fcdd61",
-    "images/04_alternating_debate.png": "db0c29b62f896ab66a048dc3a76f329297d9396269ad6222a78e738a3983f471",
+    "images/04_alternating_debate.png": "da288ef6d0bb8db6e89e905ce591d4823b7cd384f71580dfb5c3d5e03b10d408",
     "images/05_debate_core.png": "b24bc699b05758c8105519711d4a5829f94863d393d404658fbb36d1c55a76dd",
     "images/06_core_routing.png": "699ec9a6734a2af8cb087da148bf041f1b5cd3fab01efdca8ec5420da1bcf748",
     "images/07_ensemble_bound.png": "4706b60631bcd6e10599934d0a0c5e352c93b845a4abe6c865a897f8194eee93",
@@ -46,6 +48,6 @@
     "source/heatmap_style.py": "48c61d1f09dd34fabad0cbf2050254bc0cc27235c19837cf2fbd967286adae42",
     "source/numerics/endpoint_certificates.py": "1f90715a4d895c8a88dc464a4bd3fd16bf073faa1c072fe04d2e2ddf6dbebe86",
     "source/plot_curves.py": "8bc0ba5f127557760d30dc7cdccdcf1fde14401066ac4c7d2a303914b92be98a",
-    "source/plot_heatmaps.py": "4adc523b0b43784c9b6428d987e13de0e5488293bd29eb5ca2e055a3f7cb9418"
+    "source/plot_heatmaps.py": "4fdd32f3b9bae5e3efa3d458950a1b442a0816c04246ae87f733fc66f362bbdf"
   }
 }
