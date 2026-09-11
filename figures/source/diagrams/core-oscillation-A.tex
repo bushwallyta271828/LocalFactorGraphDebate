@@ -1,0 +1,288 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{amsmath}
+\usetikzlibrary{arrows.meta,backgrounds,calc,positioning,decorations.pathreplacing}
+\definecolor{route}{RGB}{31,78,121}
+\definecolor{gate}{RGB}{196,64,44}
+\definecolor{corefill}{RGB}{233,239,247}
+\definecolor{outside}{RGB}{120,120,120}
+\definecolor{setfill}{RGB}{242,246,251}
+\begin{document}
+\begin{tikzpicture}[
+  >={Stealth[length=6pt,width=5pt]},
+  title/.style={font=\normalsize,text=black!60,anchor=south},
+  note/.style={font=\footnotesize,text=black!60},
+]
+\providecommand{\osc}{\operatorname{osc}}
+\begin{scope}[vertex/.style={circle,minimum size=1.040cm,inner sep=0pt,font=\large}]
+\begin{scope}[on background layer]
+\fill[corefill] (0.000,0.000) -- (2.400,-1.600) -- (4.800,0.000) -- (2.400,1.600) -- cycle;
+\draw[corefill,line width=1.520cm,line join=round] (0.000,0.000) -- (2.400,-1.600) -- (4.800,0.000) -- (2.400,1.600) -- cycle;
+\draw[route!45,line width=0.72pt] (0.000,0.000) -- (2.400,1.600);
+\draw[route!45,line width=0.72pt] (0.000,0.000) -- (2.400,-1.600);
+\draw[route!45,line width=0.72pt] (2.400,1.600) -- (2.400,-1.600);
+\draw[route!45,line width=0.72pt] (2.400,-1.600) -- (4.800,0.000);
+\draw[outside!55,line width=0.72pt] (0.000,0.000) -- (-2.000,1.040);
+\draw[outside!55,line width=0.72pt] (2.400,1.600) -- (1.680,3.320);
+\draw[outside!55,line width=0.72pt] (4.800,0.000) -- (7.320,1.200);
+\draw[outside!55,line width=0.72pt] (4.800,0.000) -- (7.320,-1.440);
+\draw[outside!55,line width=0.72pt] (-2.000,1.040) -- (1.680,3.320);
+\draw[outside!55,line width=0.72pt] (7.320,1.200) -- (7.320,-1.440);
+\draw[outside!55,line width=0.72pt] (-2.000,1.040) -- (-4.320,-0.160);
+\draw[outside!55,line width=0.72pt] (-2.000,1.040) -- (-3.840,2.800);
+\draw[outside!55,line width=0.72pt] (-4.320,-0.160) -- (-3.840,2.800);
+\draw[outside!55,line width=0.72pt] (1.680,3.320) -- (-1.360,4.880);
+\draw[outside!55,line width=0.72pt] (-3.840,2.800) -- (-1.360,4.880);
+\draw[outside!55,line width=0.72pt] (1.680,3.320) -- (1.840,5.680);
+\draw[outside!55,line width=0.72pt] (-1.360,4.880) -- (1.840,5.680);
+\draw[outside!55,line width=0.72pt] (1.840,5.680) -- (4.560,5.040);
+\draw[outside!55,line width=0.72pt] (1.680,3.320) -- (4.560,5.040);
+\draw[outside!55,line width=0.72pt] (7.320,1.200) -- (6.960,3.760);
+\draw[outside!55,line width=0.72pt] (4.560,5.040) -- (6.960,3.760);
+\draw[outside!55,line width=0.72pt] (6.960,3.760) -- (9.760,2.880);
+\draw[outside!55,line width=0.72pt] (7.320,1.200) -- (9.760,2.880);
+\draw[outside!55,line width=0.72pt] (7.320,1.200) -- (10.080,-0.240);
+\draw[outside!55,line width=0.72pt] (7.320,-1.440) -- (10.080,-0.240);
+\draw[outside!55,line width=0.72pt] (9.760,2.880) -- (10.080,-0.240);
+\draw[outside!55,line width=0.72pt] (7.320,-1.440) -- (9.360,-3.280);
+\draw[outside!55,line width=0.72pt] (10.080,-0.240) -- (9.360,-3.280);
+\draw[outside!55,line width=0.72pt] (7.320,-1.440) -- (6.320,-4.080);
+\draw[outside!55,line width=0.72pt] (9.360,-3.280) -- (6.320,-4.080);
+\draw[outside!55,line width=0.72pt] (6.320,-4.080) -- (2.960,-4.560);
+\draw[outside!55,line width=0.72pt] (2.960,-4.560) -- (-0.720,-3.600);
+\draw[outside!55,line width=0.72pt] (-0.720,-3.600) -- (-3.360,-2.320);
+\draw[outside!55,line width=0.72pt] (-4.320,-0.160) -- (-3.360,-2.320);
+\draw[outside!55,line width=0.72pt] (6.960,3.760) -- (8.400,5.520);
+\draw[outside!55,line width=0.72pt] (9.760,2.880) -- (8.400,5.520);
+\node[vertex,draw=route,fill=route,text=white,line width=0.72pt] (t) at (0.000,0.000) {$t$};
+\node[vertex,draw=route!45,fill=white!65!corefill,line width=0.72pt] (a) at (2.400,1.600) {};
+\node[vertex,draw=route!45,fill=white!65!corefill,line width=0.72pt] (b) at (2.400,-1.600) {};
+\node[vertex,draw=route!45,fill=white!65!corefill,line width=0.72pt] (c) at (4.800,0.000) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (w) at (-2.000,1.040) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (x) at (1.680,3.320) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (y) at (7.320,1.200) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (z) at (7.320,-1.440) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p1) at (-4.320,-0.160) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p2) at (-3.840,2.800) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p3) at (-1.360,4.880) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p4) at (1.840,5.680) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p5) at (4.560,5.040) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p6) at (6.960,3.760) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p7) at (9.760,2.880) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p8) at (10.080,-0.240) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p9) at (9.360,-3.280) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p10) at (6.320,-4.080) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p11) at (2.960,-4.560) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p12) at (-0.720,-3.600) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p13) at (-3.360,-2.320) {};
+\node[vertex,draw=outside!60,fill=white,text=outside,line width=0.72pt] (p14) at (8.400,5.520) {};
+\end{scope}
+\node[note,anchor=north] at ($(t.south)+(0,-2pt)$) {target};
+\node[note,text=route!80] at (3.800,1.120) {core $K$};
+\end{scope}
+\node[title] at (2.880,6.580) {graph with core $K$};
+\begin{scope}[vertex/.style={circle,minimum size=0.286cm,inner sep=0pt,font=\scriptsize}]
+\begin{scope}[on background layer]
+\fill[corefill] (12.868,2.900) -- (13.528,2.460) -- (14.188,2.900) -- (13.528,3.340) -- cycle;
+\draw[corefill,line width=0.418cm,line join=round] (12.868,2.900) -- (13.528,2.460) -- (14.188,2.900) -- (13.528,3.340) -- cycle;
+\draw[route!45,line width=0.38pt] (12.868,2.900) -- (13.528,3.340);
+\draw[route!45,line width=0.38pt] (12.868,2.900) -- (13.528,2.460);
+\draw[route!45,line width=0.38pt] (13.528,3.340) -- (13.528,2.460);
+\draw[route!45,line width=0.38pt] (13.528,2.460) -- (14.188,2.900);
+\draw[outside!55,line width=0.38pt] (12.868,2.900) -- (12.318,3.186);
+\draw[outside!55,line width=0.38pt] (13.528,3.340) -- (13.330,3.813);
+\draw[outside!55,line width=0.38pt] (14.188,2.900) -- (14.881,3.230);
+\draw[outside!55,line width=0.38pt] (14.188,2.900) -- (14.881,2.504);
+\draw[outside!55,line width=0.38pt] (12.318,3.186) -- (13.330,3.813);
+\draw[outside!55,line width=0.38pt] (14.881,3.230) -- (14.881,2.504);
+\draw[outside!55,line width=0.38pt] (12.318,3.186) -- (11.680,2.856);
+\draw[outside!55,line width=0.38pt] (12.318,3.186) -- (11.812,3.670);
+\draw[outside!55,line width=0.38pt] (11.680,2.856) -- (11.812,3.670);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (13.330,3.813) -- (12.494,4.242);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (11.812,3.670) -- (12.494,4.242);
+\draw[outside!55,line width=0.38pt] (13.330,3.813) -- (13.374,4.462);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (12.494,4.242) -- (13.374,4.462);
+\draw[outside!55,line width=0.38pt] (13.374,4.462) -- (14.122,4.286);
+\draw[outside!55,line width=0.38pt] (13.330,3.813) -- (14.122,4.286);
+\draw[outside!55,line width=0.38pt] (14.881,3.230) -- (14.782,3.934);
+\draw[outside!55,line width=0.38pt] (14.122,4.286) -- (14.782,3.934);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.782,3.934) -- (15.552,3.692);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.881,3.230) -- (15.552,3.692);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.881,3.230) -- (15.640,2.834);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.881,2.504) -- (15.640,2.834);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (15.552,3.692) -- (15.640,2.834);
+\draw[outside!55,line width=0.38pt] (14.881,2.504) -- (15.442,1.998);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (15.640,2.834) -- (15.442,1.998);
+\draw[outside!55,line width=0.38pt] (14.881,2.504) -- (14.606,1.778);
+\draw[outside!55,line width=0.38pt] (15.442,1.998) -- (14.606,1.778);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.606,1.778) -- (13.682,1.646);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (13.682,1.646) -- (12.670,1.910);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (12.670,1.910) -- (11.944,2.262);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (11.680,2.856) -- (11.944,2.262);
+\draw[outside!55,line width=0.38pt] (14.782,3.934) -- (15.178,4.418);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (15.552,3.692) -- (15.178,4.418);
+\node[vertex,draw=route,fill=route,text=white,line width=0.38pt] (s0t) at (12.868,2.900) {};
+\node[vertex,draw=route!45,fill=white!65!corefill,line width=0.38pt] (s0a) at (13.528,3.340) {};
+\node[vertex,draw=route!45,fill=white!65!corefill,line width=0.38pt] (s0b) at (13.528,2.460) {};
+\node[vertex,draw=route!45,fill=white!65!corefill,line width=0.38pt] (s0c) at (14.188,2.900) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0w) at (12.318,3.186) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0x) at (13.330,3.813) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0y) at (14.881,3.230) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0z) at (14.881,2.504) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0p1) at (11.680,2.856) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0p2) at (11.812,3.670) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s0p3) at (12.494,4.242) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0p4) at (13.374,4.462) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0p5) at (14.122,4.286) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0p6) at (14.782,3.934) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s0p7) at (15.552,3.692) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s0p8) at (15.640,2.834) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0p9) at (15.442,1.998) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0p10) at (14.606,1.778) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s0p11) at (13.682,1.646) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s0p12) at (12.670,1.910) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s0p13) at (11.944,2.262) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s0p14) at (15.178,4.418) {};
+\end{scope}
+\end{scope}
+\node[note,anchor=north] at (13.660,1.546) {$S$ attaining $\max L_S$};
+\draw[black!35,line width=0.6pt,dash pattern=on 2pt off 2pt] (15.990,2.900) .. controls (16.940,2.900) and (16.840,3.300) .. (17.740,3.300);
+\begin{scope}[vertex/.style={circle,minimum size=0.286cm,inner sep=0pt,font=\scriptsize}]
+\begin{scope}[on background layer]
+\fill[corefill] (12.868,-1.900) -- (13.528,-2.340) -- (14.188,-1.900) -- (13.528,-1.460) -- cycle;
+\draw[corefill,line width=0.418cm,line join=round] (12.868,-1.900) -- (13.528,-2.340) -- (14.188,-1.900) -- (13.528,-1.460) -- cycle;
+\draw[route!45,line width=0.38pt] (12.868,-1.900) -- (13.528,-1.460);
+\draw[route!45,line width=0.38pt] (12.868,-1.900) -- (13.528,-2.340);
+\draw[route!45,line width=0.38pt] (13.528,-1.460) -- (13.528,-2.340);
+\draw[route!45,line width=0.38pt] (13.528,-2.340) -- (14.188,-1.900);
+\draw[outside!55,line width=0.38pt] (12.868,-1.900) -- (12.318,-1.614);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (13.528,-1.460) -- (13.330,-0.987);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.188,-1.900) -- (14.881,-1.570);
+\draw[outside!55,line width=0.38pt] (14.188,-1.900) -- (14.881,-2.296);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (12.318,-1.614) -- (13.330,-0.987);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.881,-1.570) -- (14.881,-2.296);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (12.318,-1.614) -- (11.680,-1.944);
+\draw[outside!55,line width=0.38pt] (12.318,-1.614) -- (11.812,-1.130);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (11.680,-1.944) -- (11.812,-1.130);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (13.330,-0.987) -- (12.494,-0.558);
+\draw[outside!55,line width=0.38pt] (11.812,-1.130) -- (12.494,-0.558);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (13.330,-0.987) -- (13.374,-0.338);
+\draw[outside!55,line width=0.38pt] (12.494,-0.558) -- (13.374,-0.338);
+\draw[outside!55,line width=0.38pt] (13.374,-0.338) -- (14.122,-0.514);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (13.330,-0.987) -- (14.122,-0.514);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.881,-1.570) -- (14.782,-0.866);
+\draw[outside!55,line width=0.38pt] (14.122,-0.514) -- (14.782,-0.866);
+\draw[outside!55,line width=0.38pt] (14.782,-0.866) -- (15.552,-1.108);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.881,-1.570) -- (15.552,-1.108);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.881,-1.570) -- (15.640,-1.966);
+\draw[outside!55,line width=0.38pt] (14.881,-2.296) -- (15.640,-1.966);
+\draw[outside!55,line width=0.38pt] (15.552,-1.108) -- (15.640,-1.966);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.881,-2.296) -- (15.442,-2.802);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (15.640,-1.966) -- (15.442,-2.802);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.881,-2.296) -- (14.606,-3.022);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (15.442,-2.802) -- (14.606,-3.022);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (14.606,-3.022) -- (13.682,-3.154);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (13.682,-3.154) -- (12.670,-2.890);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (12.670,-2.890) -- (11.944,-2.538);
+\draw[outside!30,line width=0.30pt,dash pattern=on 2pt off 2pt] (11.680,-1.944) -- (11.944,-2.538);
+\draw[outside!55,line width=0.38pt] (14.782,-0.866) -- (15.178,-0.382);
+\draw[outside!55,line width=0.38pt] (15.552,-1.108) -- (15.178,-0.382);
+\node[vertex,draw=route,fill=route,text=white,line width=0.38pt] (s1t) at (12.868,-1.900) {};
+\node[vertex,draw=route!45,fill=white!65!corefill,line width=0.38pt] (s1a) at (13.528,-1.460) {};
+\node[vertex,draw=route!45,fill=white!65!corefill,line width=0.38pt] (s1b) at (13.528,-2.340) {};
+\node[vertex,draw=route!45,fill=white!65!corefill,line width=0.38pt] (s1c) at (14.188,-1.900) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1w) at (12.318,-1.614) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s1x) at (13.330,-0.987) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s1y) at (14.881,-1.570) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1z) at (14.881,-2.296) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s1p1) at (11.680,-1.944) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1p2) at (11.812,-1.130) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1p3) at (12.494,-0.558) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1p4) at (13.374,-0.338) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1p5) at (14.122,-0.514) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1p6) at (14.782,-0.866) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1p7) at (15.552,-1.108) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1p8) at (15.640,-1.966) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s1p9) at (15.442,-2.802) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s1p10) at (14.606,-3.022) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s1p11) at (13.682,-3.154) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s1p12) at (12.670,-2.890) {};
+\node[vertex,draw=outside!45,fill=white,text=outside!70,line width=0.30pt,dash pattern=on 2pt off 2pt] (s1p13) at (11.944,-2.538) {};
+\node[vertex,draw=outside!60,fill=corefill,line width=0.38pt] (s1p14) at (15.178,-0.382) {};
+\end{scope}
+\end{scope}
+\node[note,anchor=north] at (13.660,-3.254) {$S$ attaining $\min L_S$};
+\draw[black!35,line width=0.6pt,dash pattern=on 2pt off 2pt] (15.990,-1.900) .. controls (16.940,-1.900) and (16.840,-1.700) .. (17.740,-1.700);
+\node[title] at (13.660,6.580) {transcripts $S\supseteq K$};
+\node[title] at (18.040,6.580) {judge's log-odds};
+\fill[corefill] (17.760,-1.700) rectangle (18.320,3.300);
+\draw[black!50,line width=0.8pt,->] (18.040,-2.600) -- (18.040,4.550);
+\node[note,anchor=south] at (18.040,4.600) {$L_S$};
+\fill[route] (18.040,-1.342) circle (1.6pt);
+\fill[route] (18.040,-1.109) circle (1.6pt);
+\fill[route] (18.040,-1.075) circle (1.6pt);
+\fill[route] (18.040,-1.034) circle (1.6pt);
+\fill[route] (18.040,-1.016) circle (1.6pt);
+\fill[route] (18.040,-0.894) circle (1.6pt);
+\fill[route] (18.040,-0.848) circle (1.6pt);
+\fill[route] (18.040,0.230) circle (1.6pt);
+\fill[route] (18.040,0.429) circle (1.6pt);
+\fill[route] (18.040,0.451) circle (1.6pt);
+\fill[route] (18.040,0.463) circle (1.6pt);
+\fill[route] (18.040,0.484) circle (1.6pt);
+\fill[route] (18.040,0.516) circle (1.6pt);
+\fill[route] (18.040,0.545) circle (1.6pt);
+\fill[route] (18.040,0.733) circle (1.6pt);
+\fill[route] (18.040,0.941) circle (1.6pt);
+\fill[route] (18.040,1.186) circle (1.6pt);
+\fill[route] (18.040,1.186) circle (1.6pt);
+\fill[route] (18.040,1.249) circle (1.6pt);
+\fill[route] (18.040,1.416) circle (1.6pt);
+\fill[route] (18.040,1.503) circle (1.6pt);
+\fill[route] (18.040,1.547) circle (1.6pt);
+\fill[route] (18.040,1.725) circle (1.6pt);
+\fill[route] (18.040,1.884) circle (1.6pt);
+\fill[route] (18.040,1.969) circle (1.6pt);
+\fill[route] (18.040,2.003) circle (1.6pt);
+\fill[route] (18.040,2.030) circle (1.6pt);
+\fill[route] (18.040,2.048) circle (1.6pt);
+\fill[route] (18.040,2.057) circle (1.6pt);
+\fill[route] (18.040,2.111) circle (1.6pt);
+\fill[route] (18.040,2.111) circle (1.6pt);
+\fill[route] (18.040,2.111) circle (1.6pt);
+\fill[route] (18.040,2.134) circle (1.6pt);
+\fill[route] (18.040,2.153) circle (1.6pt);
+\fill[route] (18.040,2.157) circle (1.6pt);
+\fill[route] (18.040,2.158) circle (1.6pt);
+\fill[route] (18.040,2.186) circle (1.6pt);
+\fill[route] (18.040,2.217) circle (1.6pt);
+\fill[route] (18.040,2.230) circle (1.6pt);
+\fill[route] (18.040,2.244) circle (1.6pt);
+\fill[route] (18.040,2.252) circle (1.6pt);
+\fill[route] (18.040,2.267) circle (1.6pt);
+\fill[route] (18.040,2.281) circle (1.6pt);
+\fill[route] (18.040,2.326) circle (1.6pt);
+\fill[route] (18.040,2.329) circle (1.6pt);
+\fill[route] (18.040,2.330) circle (1.6pt);
+\fill[route] (18.040,2.341) circle (1.6pt);
+\fill[route] (18.040,2.345) circle (1.6pt);
+\fill[route] (18.040,2.352) circle (1.6pt);
+\fill[route] (18.040,2.358) circle (1.6pt);
+\fill[route] (18.040,2.369) circle (1.6pt);
+\fill[route] (18.040,2.371) circle (1.6pt);
+\fill[route] (18.040,2.379) circle (1.6pt);
+\fill[route] (18.040,2.395) circle (1.6pt);
+\fill[route] (18.040,2.404) circle (1.6pt);
+\fill[route] (18.040,2.419) circle (1.6pt);
+\fill[route] (18.040,2.766) circle (1.6pt);
+\fill[route] (18.040,2.889) circle (1.6pt);
+\fill[route] (18.040,2.945) circle (1.6pt);
+\fill[route] (18.040,2.982) circle (1.6pt);
+\fill[route] (18.040,-1.700) circle (1.6pt);
+\fill[route] (18.040,3.300) circle (1.6pt);
+\draw[route,line width=0.9pt] (17.760,3.300) -- (18.320,3.300);
+\draw[route,line width=0.9pt] (17.760,-1.700) -- (18.320,-1.700);
+\node[note,anchor=west,text=route] at (18.400,3.300) {$\max L_S$};
+\node[note,anchor=west,text=route] at (18.400,-1.700) {$\min L_S$};
+\draw[decorate,decoration={brace,amplitude=5pt},route,line width=0.8pt] (19.540,3.300) -- (19.540,-1.700) node[midway,xshift=10pt,anchor=west,font=\normalsize,text=route] {$\osc(K)$};
+\end{tikzpicture}
+\end{document}
