@@ -28,13 +28,17 @@
 \date{September 2026}
 \begin{document}
 \maketitle
+\begin{center}
+\fbox{\parbox{.92\textwidth}{\textit{All text in this document is
+AI-generated. For a human-vetted version of this material, see the original
+LessWrong post.}}}
+\end{center}
 \begin{abstract}
 Two debaters know a graphical model that a judge can inspect only a little
 at a time. They take turns choosing variables to reveal; the judge then
 computes the target log-odds in the revealed submodel. How close is the
-result to the answer from the whole model? We develop the argument in the
-order of the accompanying post. A small set of arguments first gives a
-strategic guarantee. Message passing then bounds the influence of everything
+result to the answer from the whole model? A small set of arguments first
+gives a strategic guarantee. Message passing then bounds the influence of everything
 outside that set. Gaussian averaging turns this bound into a power of the
 inspection budget. Finally, a projection argument on regular trees explains
 why a polynomial obstruction can remain even under optimal play.
@@ -73,22 +77,17 @@ $(d-1)^R$ vertices. Thus exponential decay in distance becomes polynomial
 decay in the number of revelations. This change of scale is the geometric
 reason for the powers appearing later.
 
-The connection with statistical mechanics is useful, but the model here
-is more specific than an analogy with a magnet. A random interaction table
-produces both an interaction and random local preferences. Strong local
-preferences can suppress the transmission of additional evidence. Increasing
-the scale of the tables therefore need not make debate harder.
-Neither a failed upper bound nor a finite-budget numerical plateau proves a
-phase transition. Nor is completion stability the same as weak spin
-correlation: with zero fields and pure interactions $J_ex_ux_v/2$, global
-spin-flip symmetry gives $L_S=0$ for every induced submodel. All core
-oscillations then vanish, even when strong positive interactions make
-spins highly correlated.
+A random interaction table produces both an interaction and random local
+fields, as \eqref{eq:contrast} makes explicit. A strong local field reduces
+the slope of the edge response \eqref{eq:slope}, so increasing the scale of
+the tables need not make debate harder; Section~\ref{sec:ensemble} makes this
+quantitative at degrees three and four. Completion stability is also not the
+same as weak spin correlation: with zero fields and pure interactions
+$J_ex_ux_v/2$, global spin-flip symmetry gives $L_S=0$ for every induced
+submodel. All core oscillations then vanish, even when strong positive
+interactions make spins highly correlated.
 
-Debate as a method of supervision has a broader literature
-\cite{irving,browncohen}. Here we isolate one mechanism: strategic selection
-of authentic model components. We do not model fabricated evidence,
-approximate optimization, or computationally limited inference.
+For debate as a method of supervision, see \cite{irving,browncohen}.
 
 \clearpage
 \section{Problem formulation}
@@ -176,7 +175,6 @@ imply a large probability error when both logits are saturated.
 
 There is no ground-truth assignment in the performance criterion.
 Agreement with $L_V$ is agreement with the fully informed judge's model.
-A misspecified full model can still be wrong about the world.
 
 \clearpage
 \section{Cores and oscillation}
@@ -433,7 +431,6 @@ independent of all edge tables, since we can condition on them first.
 The three contrasts in \eqref{eq:contrast} are orthogonal. Consequently
 $H_{e,u},H_{e,v},J_e$ are independent $N(0,\sigma^2)$ variables.
 
-This observation is more useful than a bound on the largest table entry.
 An input to a message contains several fresh Gaussian fields. Those fields
 usually shift the input away from the location where the response has its
 largest slope. Averaging the interval recursion exploits this shift.
@@ -836,7 +833,7 @@ The auxiliary Gaussian is what keeps the dependence along the path under
 control. Factoring the actual gains into independent one-edge expectations
 would not be justified.
 
-\subsection{The post's explicit lower bound}
+\subsection{An explicit lower bound}
 All the ingredients are now in place. The next statement is deliberately
 shorter to calculate than the stronger certificates in
 Appendix~\ref{app:stronger}.
@@ -935,33 +932,21 @@ without outward rounding.}
 \end{figure}
 
 \clearpage
-\section{Next steps and the limits of the conclusion}
+\section{Scope of the conclusions}
 
 The forcing argument is insensitive to the order of the players' moves;
 what it uses is that either player can fit a useful core into its own quota.
-The hard part is estimating how stable a small core can be. Random fields,
-weak edges, and cancellations can make a particular core far better than a
-uniform radius bound predicts.
+The remaining difficulty is estimating how stable a small core can be. On
+the boards of Figure~\ref{fig:paired}, the mean optimized-core oscillation
+at $h=100$ is about $0.024$, while the uniform bound of
+Theorem~\ref{thm:upper} evaluates to about $0.23$ there: a core chosen after
+seeing the tables can be much better than the radius bound predicts.
 
-A different protocol could ask for intermediate numerical claims and allow
-a challenge to descend a single branch. Such a protocol would need a rule
-for what is asserted, what is checked, and how errors propagate. It would
-also change the judge. The lower bound here concerns the induced-submodel
-judge and the class $\Vcl_k$; it is not an impossibility theorem for recursive
-verification or debate in general.
-
-Likewise, the failure of a particular contraction criterion leaves an open
-mathematical question. Neither a gray heatmap cell nor a run stopped at a
-budget cutoff proves a nonlocal regime. Extending useful bounds into these
-regions requires an argument that keeps the actual model and error metric
-in view. Results about additive or affine tree games cannot be transferred
-to nonlinear factor-graph messages without such an argument.
-
-Finally, an agreement theorem for an idealized judge addresses only one
-part of supervision. Applying the model to programming, politics, or
-philosophy would require evidence that the chosen variables, factorization,
-revelation rule, and local computation describe the task. Those applications
-motivate the question; the mathematics here does not classify those domains.
+The lower bound concerns the induced-submodel judge and the class $\Vcl_k$
+of Section~\ref{sec:lower}; it is not an impossibility theorem for other
+judges or protocols. Likewise $\rho<1$ is a sufficient condition. Neither a
+gray heatmap cell nor a run stopped at a budget cutoff shows that debate
+fails there.
 
 \appendix
 \clearpage
@@ -1392,17 +1377,13 @@ mean on $50{,}000$-vertex partially filled trees. The debate panel brackets
 a population crossing on declared finite tree balls using guarded numerical
 enclosures and sequential statistical tests. The ensemble panel evaluates
 a size-uniform theorem. The lower-exponent panel evaluates a different
-metric, RMS, with depth increasing logarithmically in the budget. None of
-these distinctions is removed by using the same colors.
+metric, RMS, with depth increasing logarithmically in the budget.
 
 The three curve figures reuse the same $64$ depth-eight boards, allowing
 a paired empirical comparison of debate and core error. For each board the
 error is measured against its own full-tree logit, not an infinite-tree
 limit. The outer shaded bands are approximate pointwise sampling bands;
-they are not simultaneous confidence bands over every budget. Floating-point
-game enclosures, exact combinatorial core optimization with floating-point
-arithmetic, and quadrature of theorem constants should each be described
-at their actual level of numerical assurance.
+they are not simultaneous confidence bands over every budget.
 
 \begin{thebibliography}{9}
 \bibitem{irving}
